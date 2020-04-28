@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package main.services.v1;
+
+import "main/resources/v1/user.proto";
+
+service User {
+    // TODO: implement GetUser RPC
+    rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+    rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+}
+
+message ListUsersRequest {
+    uint32 page = 1;
+    uint32 per_page = 2;
+}
+
+message ListUsersResponse {
+    repeated main.resources.v1.User users = 1;
+    uint64 count = 2;
+}
+
+message GetUserRequest {
+    // TODO: implement
+}
+
+message GetUserResponse {
+    // TODO: implement
+}
+
+message CreateUserRequest {
+    main.resources.v1.User user = 1;
+}
+
+message CreateUserResponse {
+    main.resources.v1.User user = 1;
+}
+
+message DeleteUserRequest {
+    uint64 id = 1;
+}
+
+message DeleteUserResponse {}

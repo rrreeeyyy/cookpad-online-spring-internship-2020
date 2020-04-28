@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package main.resources.v1;
+
+import "main/resources/v1/user.proto";
+import "main/resources/v1/ingredient.proto";
+import "main/resources/v1/step.proto";
+
+import "google/protobuf/timestamp.proto";
+
+message Recipe {
+    uint64 id = 1;
+    User user = 2;
+    repeated Ingredient ingredients = 3;
+    repeated Step steps = 4;
+    string title = 5;
+    string description = 6;
+
+    google.protobuf.Timestamp created_at = 7;
+    google.protobuf.Timestamp updated_at = 8;
+}

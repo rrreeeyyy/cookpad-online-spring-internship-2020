@@ -1,0 +1,79 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    aws-eventstream (1.1.0)
+    aws-partitions (1.303.0)
+    aws-sdk-applicationautoscaling (1.37.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-autoscaling (1.34.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-cloudwatch (1.36.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-cloudwatchlogs (1.29.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-core (3.94.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-ec2 (1.154.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-ecs (1.60.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-elasticloadbalancing (1.20.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-elasticloadbalancingv2 (1.41.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-kms (1.30.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.63.0)
+      aws-sdk-core (~> 3, >= 3.83.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-servicediscovery (1.20.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-sns (1.22.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-ssm (1.73.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.1.2)
+      aws-eventstream (~> 1.0, >= 1.0.2)
+    hako (2.13.0)
+      aws-sdk-applicationautoscaling
+      aws-sdk-autoscaling
+      aws-sdk-cloudwatch
+      aws-sdk-cloudwatchlogs
+      aws-sdk-ec2
+      aws-sdk-ecs (>= 1.54.0)
+      aws-sdk-elasticloadbalancing
+      aws-sdk-elasticloadbalancingv2
+      aws-sdk-s3
+      aws-sdk-servicediscovery
+      aws-sdk-sns
+      aws-sdk-ssm
+      jsonnet
+    jmespath (1.4.0)
+    jsonnet (0.3.0)
+      mini_portile2 (>= 2.2.0)
+    mini_portile2 (2.5.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  hako
+
+BUNDLED WITH
+   2.1.4

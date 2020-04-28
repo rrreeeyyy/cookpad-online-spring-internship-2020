@@ -1,0 +1,27 @@
+FROM ubuntu:18.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+  apt-get install -y curl git-core build-essential apt-transport-https gnupg2 tzdata && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN curl -L 'https://sorah.jp/packaging/debian/3F0F56A8.pub.txt' | apt-key add -
+RUN echo "deb [arch=amd64] https://cache.ruby-lang.org/lab/sorah/deb/ bionic main" > /etc/apt/sources.list.d/sorah-ruby.list
+
+ENV LANG=C.UTF-8
+
+ARG RUBY_VERSION=2.6
+ARG RUBY_PACKAGE_VERSION=2.6.6-0nkmi1~bionic
+
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
+  ruby=1:2.6.0+0nkmi1~bionic \
+  ruby${RUBY_VERSION}=${RUBY_PACKAGE_VERSION} \
+  libruby${RUBY_VERSION}=${RUBY_PACKAGE_VERSION} \
+  ruby${RUBY_VERSION}-dev=${RUBY_PACKAGE_VERSION} \
+  ruby${RUBY_VERSION}-gems=${RUBY_PACKAGE_VERSION} \
+  libxml2-dev libxslt-dev zlib1g-dev libjemalloc1 && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN gem install bundler -v 1.17.3
+RUN gem install bundler -v 2.1.4

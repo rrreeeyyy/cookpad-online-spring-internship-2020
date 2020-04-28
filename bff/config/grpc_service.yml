@@ -1,0 +1,20 @@
+
+development: &development
+  main:
+    host: localhost
+    port: 8081
+    authority: main-grpc
+  tsukurepo_backend:
+    host: localhost
+    port: 8082
+    authority: tsukurepo-backend-grpc
+
+production:
+  main:
+    host: <%= ENV.fetch('MAIN_GRPC_HOST', 'main') %>
+    port: <%= ENV.fetch('MAIN_GRPC_PORT', 8081) %>
+    authority: main-grpc
+  tsukurepo_backend:
+    host: <%= ENV.fetch('TSUKUREPO_GRPC_HOST', 'tsukurepo_backend') %>
+    port: <%= ENV.fetch('TSUKUREPO_GRPC_PORT', 8082) %>
+    authority: tsukurepo-backend-grpc

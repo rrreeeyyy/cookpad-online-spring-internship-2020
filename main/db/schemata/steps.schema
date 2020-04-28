@@ -1,0 +1,6 @@
+create_table "steps", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
+  t.bigint   "recipe_id", null: false
+  t.string   "description", null: false
+  t.integer  "position", null: false
+  t.timestamps
+end

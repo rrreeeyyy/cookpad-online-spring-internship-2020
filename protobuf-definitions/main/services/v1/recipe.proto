@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package main.services.v1;
+
+import "main/resources/v1/recipe.proto";
+
+service Recipe {
+    rpc GetRecipe(GetRecipeRequest) returns (GetRecipeResponse) {}
+    rpc ListRecipes(ListRecipesRequest) returns (ListRecipesResponse) {}
+    rpc CreateRecipe(CreateRecipeRequest) returns (CreateRecipeResponse) {}
+    rpc DeleteRecipe(DeleteRecipeRequest) returns (DeleteRecipeResponse) {}
+    rpc ListRecipesByUser(ListRecipesByUsersRequest) returns (ListRecipesByUserResponse) {}
+}
+
+message GetRecipeRequest {
+    uint64 id = 1;
+}
+
+message GetRecipeResponse {
+    main.resources.v1.Recipe recipe = 1;
+}
+
+message ListRecipesRequest {
+    uint32 page = 1;
+    uint32 per_page = 2;
+}
+
+message ListRecipesResponse {
+    repeated main.resources.v1.Recipe recipes = 1;
+    uint64 count = 2;
+}
+
+message CreateRecipeRequest {
+    main.resources.v1.Recipe recipe = 1;
+}
+
+message CreateRecipeResponse {
+    main.resources.v1.Recipe recipe = 1;
+}
+
+message DeleteRecipeRequest {
+    uint64 id = 1;
+}
+
+message DeleteRecipeResponse {}
+
+message ListRecipesByUsersRequest {
+    uint32 page = 1;
+    uint32 per_page = 2;
+    uint64 user_id = 3;
+}
+
+message ListRecipesByUserResponse {
+    repeated main.resources.v1.Recipe recipes = 1;
+}

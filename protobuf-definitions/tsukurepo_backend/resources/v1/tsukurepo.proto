@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package tsukurepo_backend.resources.v1;
+
+import "main/resources/v1/user.proto";
+import "main/resources/v1/recipe.proto";
+import "google/protobuf/timestamp.proto";
+
+message Tsukurepo {
+    uint64 id = 1;
+    uint64 recipe_id = 2;
+    uint64 user_id = 3;
+    string comment = 4;
+    main.resources.v1.User user = 5;
+    main.resources.v1.Recipe recipe = 6;
+
+    google.protobuf.Timestamp created_at = 7;
+    google.protobuf.Timestamp updated_at = 8;
+}

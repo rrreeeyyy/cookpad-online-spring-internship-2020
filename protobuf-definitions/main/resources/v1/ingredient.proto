@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package main.resources.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Ingredient {
+    string name = 1;
+    string quantity = 2;
+
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
+}

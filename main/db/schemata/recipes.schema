@@ -1,0 +1,6 @@
+create_table "recipes", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
+  t.string   "title", null: false
+  t.integer  "user_id", null: false
+  t.string   "description", null: false
+  t.timestamps
+end

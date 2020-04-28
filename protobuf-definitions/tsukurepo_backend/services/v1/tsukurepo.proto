@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package tsukurepo_backend.services.v1;
+
+import "tsukurepo_backend/resources/v1/tsukurepo.proto";
+
+service Tsukurepo {
+    rpc GetTsukurepo(GetTsukurepoRequest) returns (GetTsukurepoResponse) {}
+    rpc ListTsukurepos(ListTsukureposRequest) returns (ListTsukureposResponse) {}
+    rpc CreateTsukurepo(CreateTsukurepoRequest) returns (CreateTsukurepoResponse) {}
+    rpc DeleteTsukurepo(DeleteTsukurepoRequest) returns (DeleteTsukurepoResponse) {}
+}
+
+message GetTsukurepoRequest {
+    uint64 id = 1;
+}
+
+message GetTsukurepoResponse {
+    tsukurepo_backend.resources.v1.Tsukurepo tsukurepo = 1;
+}
+
+message ListTsukureposRequest {
+    uint32 page = 1;
+    uint32 per_page = 2;
+}
+
+message ListTsukureposResponse {
+    repeated tsukurepo_backend.resources.v1.Tsukurepo tsukurepos = 1;
+}
+
+message CreateTsukurepoRequest {
+    tsukurepo_backend.resources.v1.Tsukurepo tsukurepo = 1;
+}
+
+message CreateTsukurepoResponse {
+    tsukurepo_backend.resources.v1.Tsukurepo tsukurepo = 1;
+}
+
+message DeleteTsukurepoRequest {
+    uint64 id = 1;
+}
+
+message DeleteTsukurepoResponse {}

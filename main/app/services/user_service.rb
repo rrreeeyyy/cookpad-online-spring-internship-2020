@@ -20,7 +20,7 @@ class UserService < Main::Services::V1::User::Service
       count: User.count,
     )
   rescue ActiveRecord::RecordNotFound => e
-    raise GRPC::NotFoundss.new(e.message)
+    raise GRPC::NotFound.new(e.message)
   end
 
   def create_user(request, call)

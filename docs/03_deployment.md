@@ -37,7 +37,7 @@ $(aws ecr get-login --no-include-email --region=ap-northeast-1)
 その後、`docker-build.sh` を実行します。これにより ECR にビルドした docker イメージがプッシュされます。
 
 ```sh
-scripts/docker-build.sh
+sudo scripts/docker-build.sh
 ```
 
 ## ECS / Hako
@@ -64,7 +64,7 @@ hako の定義ファイルの中には、ロードバランサの設定やデプ
 ここまで準備が整ったらデプロイを行ってみましょう。必要な情報をチェックして `bundle exec hako deploy` を行うだけの `hako-deploy.sh` を用意したのでそれを利用します。
 
 ```sh
-scripts/hako-deploy.sh
+sudo scripts/hako-deploy.sh
 ```
 
 
@@ -110,8 +110,18 @@ ecs-cli logs --task-id dca5864b-416e-4263-b827-423eadb05956 --region ap-northeas
 
 そのため、例えばインデックスを追加したので本番のデータベースに対して `ridgepole:apply` したいような場合は次のようにします。
 
+ここでは、あなた専用の設定ファイルを作る必要があるため、次のように実行します。
+
+```sh
+mv hako/hako-oneshot-main.jsonnet hako/${GITHUB_ID_LOWER_CASE}-oneshot-main.jsonnet
+mv hako/hako-oneshot-tsukurepo_backend.jsonnet hako/${GITHUB_ID_LOWER_CASE}-oneshot-tsukurepo_backend.jsonnet
+```
+
+その後、次を実行してください。
+
 ```sh
 scripts/hako-oneshot-main.sh bundle exec rake ridgepole:apply
+scripts/hako-oneshot-tsukurepo.sh bundle exec rake ridgepole:apply
 ```
 
 ログは、通常の場合と同じく、ecs-cli で task-id を指定することで確認できます。`hako-oneshot-main.sh` の出力にも task-id は含まれているため、それを利用するとよいでしょう。

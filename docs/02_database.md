@@ -22,7 +22,7 @@ RDBMS でボトルネックになりやすい箇所の一つは、当然です�
 `curl http://localhost:3000/v1/users` を実行し、次のコマンドで出力されているスロークエリを確認してみましょう。
 
 ```
-$ docker-compose exec -T mysql tail /var/log/mysql/slow.log
+$ sudo docker-compose exec -T mysql tail /var/log/mysql/slow.log
 # Time: 2020-04-28T13:37:49.981180Z
 # User@Host: root[main] @ localhost []  Id:     7
 # Query_time: 1.35795  Lock_time: 0.000154 Rows_sent: 20  Rows_examined: 1992900
@@ -38,7 +38,7 @@ MySQL では `EXPLAIN` の後にクエリを書くことで EXPLAIN を見るこ
 実際に、次のコマンドを発行して EXPLAIN を見てみましょう。
 
 ```
-docker-compose run main bin/rails c
+sudo docker-compose run main bin/rails c
 > User.order(created_at: :desc).limit(20).explain # MySQL に EXPLAIN SELECT `users`.* FROM `users` ORDER BY `users`.`created_at` DESC LIMIT 20 を発行するのと同じ
 +----+-------------+-------+------------+------+---------------+------+---------+------+---------+----------+----------------+
 | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows    | filtered | Extra          |
@@ -113,8 +113,8 @@ $EDITOR main/db/schemata
 とした後に、ridgepole:apply を行います。このタスクは `main/lib/tasks/ridgepole.rake` の中で定義されています。
 
 ```sh
-docker-compose up --build -d
-docker-compose run main bundle exec rake ridgepole:apply
+sudo docker-compose up --build -d
+sudo docker-compose run main bundle exec rake ridgepole:apply
 ```
 
 作成できたら先程と同じく、EXPLAIN を確認し、結果を比較してみましょう。

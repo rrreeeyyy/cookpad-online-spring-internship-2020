@@ -228,7 +228,7 @@ class UserService < Main::Services::V1::User::Service
       users: users.map(&:as_protocol_buffer)
     )
   rescue ActiveRecord::RecordNotFound => e
-    raise GRPC::NotFoundss.new(e.message)
+    raise GRPC::NotFound.new(e.message)
   end
 ```
 
